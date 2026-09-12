@@ -38,5 +38,14 @@
     "open-interface": {
       "description": "Open the interface in a window"
     }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{a926234f-b54e-4125-aea0-5681ea7fe265}",
+      "strict_min_version": "148.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
   }
 }

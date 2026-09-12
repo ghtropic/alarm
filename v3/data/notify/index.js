@@ -63,7 +63,7 @@ document.getElementById('clean').onclick = e => {
   const v = e.target.value;
   e.target.value = 'Clearing...';
   chrome.runtime.sendMessage({
-    method: 'clear-alarm',
+    method: 'clear-snoozes',
     name: args.get('name')
   }, () => setTimeout(() => e.target.value = v, 500));
 };

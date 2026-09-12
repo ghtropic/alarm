@@ -409,6 +409,13 @@ const onMessage = (request, sender, respose) => {
   else if (request.method === 'clear-alarm') {
     alarms.clear(request.name);
   }
+  else if (request.method === 'clear-snoozes') {
+    alarms.getAll(as => {
+      for (const a of as.filter(a => a.name.startsWith('audio-' + request.name + '/'))) {
+        alarms.clear(a.name);
+      }
+    });
+  }
   else if (request.method === 'batch') {
     for (const job of request.jobs) {
       if (job.method === 'clear-alarm') {
