@@ -50,6 +50,13 @@ h1 {
   background-color: rgb(237, 237, 237);
   padding: 20px 0;
 }
+input[type=color] {
+  width: 48px;
+  height: 28px;
+  padding: 2px;
+  background: none;
+  cursor: pointer;
+}
 .cols {
   display: grid;
   grid-template-columns: 1fr 150px;
