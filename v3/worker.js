@@ -373,7 +373,7 @@ const badge = {
     clearTimeout(badge.id);
     const [a, prefs] = await Promise.all([
       chrome.alarms.get('timer-1'),
-      chrome.storage.local.get({'badge-enabled': true})
+      chrome.storage.local.get({'badge-enabled': false})
     ]);
     const left = a && prefs['badge-enabled'] ? a.scheduledTime - Date.now() : 0;
 
