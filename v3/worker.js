@@ -371,8 +371,11 @@ const badge = {
   },
   async update() {
     clearTimeout(badge.id);
-    const a = await chrome.alarms.get('timer-1');
-    const left = a ? a.scheduledTime - Date.now() : 0;
+    const [a, prefs] = await Promise.all([
+      chrome.alarms.get('timer-1'),
+      chrome.storage.local.get({'badge-enabled': true})
+    ]);
+    const left = a && prefs['badge-enabled'] ? a.scheduledTime - Date.now() : 0;
 
     if (left <= 0) {
       chrome.action.setBadgeText({text: ''});
@@ -399,7 +402,10 @@ const badge = {
 };
 
 chrome.storage.onChanged.addListener(ps => {
-  if (ps['badge-color']) {
+  if (ps['badge-enabled']) {
+    badge.update();
+  }
+  else if (ps['badge-color']) {
     badge.paint();
   }
 });

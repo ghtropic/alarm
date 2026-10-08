@@ -57,6 +57,10 @@ input[type=color] {
   background: none;
   cursor: pointer;
 }
+input[type=color]:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 .cols {
   display: grid;
   grid-template-columns: 1fr 150px;
